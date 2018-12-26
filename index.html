@@ -1,0 +1,91 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+	<title>Clients</title>
+	<meta charset="UTF-8">
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <link rel="shortcut icon" href="#" />
+	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" >
+		<div class="container" >
+			<div class="navbar-header" >
+				<a class="navbar-brand"
+				   href="/" >Parcelite
+				</a >
+			</div >
+		</div >
+	</nav >
+	<div class="container main-content" ng-controller="clientsCtrlr">
+		<h1>Clients</h1>
+		<table class="table">
+			<thead>
+				<tr>
+					<form >
+						<div class="form-group">
+							<label for="firstName">First name</label>
+							<input 	type="text" 
+											class="form-control"
+									 		ng-model="formModel.firstName"
+									 		id="firstName">
+						</div>
+				
+						<div class="form-group">
+							<label for="lastName">Last name</label>
+							<input type="text" 
+										 class="form-control"
+										 ng-model="formModel.lastName"
+										 id="lastName">
+						</div>
+				
+						<div class="form-group">
+							<label for="userName">Username</label>
+							<input type="text" 
+										 class="form-control"
+										 ng-model="formModel.userName"
+										 id="userName">
+						</div>
+				
+						<div class="form-group">
+							<label for="postCode">Post Code</label>
+							<input type="text" 
+										 class="form-control"
+										 ng-model="formModel.postCode"
+										 id="postCode">
+						</div>
+					</form>
+					<pre>{{client | json}}</pre>
+				</tr>
+				<tr>
+					<td><button class="btn btn-primary" ng-click="register()"> Register </button></td>
+					<td><button class="btn btn-info" ng-click="update()"> Update </button></td>
+					<td><button class="btn btn-info" ng-click="deselect()"> Clear </button></td>		
+				</tr>
+				<tr>
+					<th>First name</th>
+					<th>Last name</th>
+					<th>Username</th>
+					<th>Post Code</th>
+					<th>Action</th>
+					<th>&nbsp;</th>
+					<th>&nbsp;</th>
+				</tr>				
+			</thead>
+			<tbody>
+				<tr ng-repeat="client in clients">
+					<td>{{client.firstName}}</td>
+					<td>{{client.lastName}}</td>
+					<td>{{client.userName}}</td>
+					<td>{{client.postCode}}</td>
+					<td><button class="btn btn-danger" ng-click="remove(client._id)"> Remove </button></td>
+					<td><button class="btn btn-warning" ng-click="edit(client._id)"> Edit </button></td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
+	<script src="/node_modules/angular/angular.min.js"></script>
+	<script src="/controllers/controller.js"></script>
+</body>
+</html>
